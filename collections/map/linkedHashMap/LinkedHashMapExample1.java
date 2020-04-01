@@ -2,6 +2,7 @@ package collections.map.linkedHashMap;
 
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
+import java.util.function.Function;
 
 public class LinkedHashMapExample1 {
 
@@ -9,6 +10,11 @@ public class LinkedHashMapExample1 {
      * Create a constant PrintWriter since it will used many times ( in a lambda ), but only needs to be created once.
      */
     private final static PrintWriter printWriter = new PrintWriter(System.out);
+
+    /**
+     * My functon to increment an integer by 1
+     */
+    private static final Function<Integer, Integer> incrementBy1 = IncrementInteger.increment( IncrementInteger::increment, 1);
 
 
     /**
@@ -21,7 +27,7 @@ public class LinkedHashMapExample1 {
      * @return              The current value incremented by an Integer
      */
     public static Integer compute(Character key, Integer value ) {
-        Integer nextValue = ( value == null ) ? 0 : value + 1;
+        Integer nextValue = ( value == null ) ? 1 : incrementBy1.apply(value);
         return nextValue;
     }
     
