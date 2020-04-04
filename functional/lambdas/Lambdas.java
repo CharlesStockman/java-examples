@@ -130,10 +130,10 @@ public class Lambdas<T> implements StringUtils, ElementUtils<T> {
         String s2 = "Sharon";
 
         Boolean result = lambdas.betterString(s1, s2, (s3, s4) -> s3.length() > s4.length());
-        System.out.printf("With input one as %s and input two as %s the fucntion compares length and the result is %b\n", s1, s2, result);
+        System.out.printf("With input one as %s and input two as %s the function compares length and the result is %b\n", s1, s2, result);
 
         Boolean result2 = lambdas.betterString(s2, s1, (s3, s4) -> s3.length() > s4.length());
-        System.out.printf("With input one as %s and input two as %s the fucntion compares length and the result is %b\n", s2, s1, result2);
+        System.out.printf("With input one as %s and input two as %s the function compares length and the result is %b\n", s2, s1, result2);
 
         Boolean result3 = lambdas.betterString(s1, s2, (s3, s4) -> true);
         System.out.printf("With input one as %s and input two as %s the function always returns true --> return value %b\n", s1, s2, result3);
