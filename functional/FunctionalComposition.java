@@ -37,8 +37,8 @@ public class FunctionalComposition {
 
         Predicate<T> returnPredicate = (e) -> true;
 
-        for (Predicate predicate : predicates) {
-            returnPredicate.and(predicate);
+        for (Predicate<T> predicate : predicates) {
+            returnPredicate = returnPredicate.and(predicate);
         }
 
         return returnPredicate;
@@ -52,7 +52,6 @@ public class FunctionalComposition {
      */
     public static <T> T firstAllMatch(Stream<T> words, Predicate<T> andPredicates) {
         T result = words.filter(andPredicates).findFirst().orElse(null);
-
         return result;
     }
 
@@ -68,15 +67,11 @@ public class FunctionalComposition {
         String result = FunctionalComposition.firstAllMatch(wordsStream, chainedPredicate);
         System.out.printf("For the input %s The firstAllMatch result is %s\n", words.toString(), result);
     }
-
-
-
     public static void main(String... args) {
 
         List<String> words = new ArrayList<>( Arrays.asList("toaster", "cat", "looking"));
-        Stream<String> wordsStream = words.stream();
 
-        Predicate<String>  test1 = ( word ) -> word.contains("o");
+        Predicate<String>  test1 = ( word ) -> word.contains("o"); 
         Predicate<String>  test2 = ( word ) -> word.length() > 5;
         
         Predicate chainedPredicate = FunctionalComposition.allPassPredicate(test1, test2);
@@ -85,9 +80,5 @@ public class FunctionalComposition {
 
         words.add(0,"I");
         FunctionalComposition.conveinanceFunction(chainedPredicate, words);
- 
-
-
-
     }
 }
