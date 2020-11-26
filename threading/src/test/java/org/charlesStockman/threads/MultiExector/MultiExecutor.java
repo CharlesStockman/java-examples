@@ -28,7 +28,7 @@ public class MultiExecutor {
         Assertions.assertEquals(resultName1, answer);
 
         answer2 = generateUniqueNameWithDifferentiator();
-        Assertions.assertEquals(resultName2, answer);
+        Assertions.assertEquals(resultName2, answer2);
 
     }
 
