@@ -3,6 +3,8 @@ package org.charlesStockman.threads.MultiExector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -44,6 +46,31 @@ public class MultiExecutor {
         answer2 = generateUniqueNameWithDifferentiator();
         Assertions.assertEquals(resultName2, answer2);
 
+    }
+
+    /**
+     * Create a ThreadFactory and verify that it can set the name of the thread
+     */
+    public void testSetThreadName() {
+
+        String threadName = generateUniqueNameWithDifferentiator();
+        Runnable runnable = () -> System.out.println("Charles Stockman");
+
+        ThreadFactory factory = new ThreadFactorySetName(threadName);
+        Thread thread = factory.newThread(runnable);
+        Assertions.assertEquals(thread.getName(), threadName);
+
+    }
+
+    /**
+     * Test the ability to find a thread by its name
+     */
+    public void findThreadByName() {
+        String name = "Finalizer";
+
+        Set<Thread> threads = findThreadByName();
+        Assertions.assertTrue( threads.size() == 1);
+        Assertions.assertEquals( threads.iterator().next().getName(), name);
     }
 
     /**
