@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -68,9 +69,11 @@ public class MultiExecutor {
     public void findThreadByName() {
         String name = "Finalizer";
 
-        Set<Thread> threads = findThreadByName();
-        Assertions.assertTrue( threads.size() == 1);
-        Assertions.assertEquals( threads.iterator().next().getName(), name);
+        Thread thread = findThreadByName();
+        Assertions.assertNotNull(thread);
+        Assertions.assertSame(thread.getName(), name);
+
+
     }
 
     /**
