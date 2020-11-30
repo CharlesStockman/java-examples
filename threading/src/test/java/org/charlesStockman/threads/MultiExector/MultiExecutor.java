@@ -69,12 +69,12 @@ public class MultiExecutor {
     public void findThreadByName() {
         String name = "Finalizer";
 
-        Thread thread = findThreadByName();
+        Thread thread = findThreadByName(name);
         Assertions.assertNotNull(thread);
         Assertions.assertSame(thread.getName(), name);
-
-
     }
+
+
 
     /**
      * Creates a generic name ( the class name ) with the differentiator
