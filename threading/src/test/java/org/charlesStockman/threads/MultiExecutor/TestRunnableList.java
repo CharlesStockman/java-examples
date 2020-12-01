@@ -1,5 +1,6 @@
 package org.charlesStockman.threads.MultiExecutor;
 
+import org.charlesStockman.threads.MultiExector.RunnableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ public class TestRunnableList {
 
         // Get the list of runnables
         RunnableList runnableList = new RunnableList();
-        Runnable runnable = runnableList.get(0);
+        Runnable runnable = runnableList.get().get(0);
 
         // Create the thread and start it
         Thread thread = new Thread(runnable);
